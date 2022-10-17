@@ -1984,7 +1984,7 @@ __metadata:
     eslint-plugin-svelte3: ^4.0.0
     prettier: 2.7.1
     prettier-plugin-svelte: ^2.7.0
-    svelte: ^3.44.0
+    svelte: ^3.49.0
     svelte-preprocess: ^4.10.7
     vite: ^3.1.0
   languageName: unknown
@@ -2423,7 +2423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^3.44.0":
+"svelte@npm:^3.49.0":
   version: 3.52.0
   resolution: "svelte@npm:3.52.0"
   checksum: a1fcbf63901055ee0224872aaf1e7736920ce8b9ced5b132c3d62506e11d125aa86ad1b889a08601ffa2b92fb96adc66e1b1c0c866d2f681788403d3e5f7b39e

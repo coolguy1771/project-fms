@@ -1,44 +1,111 @@
 <script>
-    let showMenu = false;
-
-    function toggleNavbar() {
-        showMenu = !showMenu;
-    }
+  import { page } from '$app/stores'
+  import github from '$lib/images/github.svg'
 </script>
 
-<div>
-    <nav
-      class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center"
-    >
-      <div class="flex items-center justify-between">
-        <a
-          class="text-xl font-bold text-gray-800 md:text-2xl hover:text-blue-400"
-          href="/home"
-          >Logo
-        </a>
-        <!-- Mobile menu button -->
-        <div on:click={toggleNavbar} class="flex md:hidden">
-          <button
-            type="button"
-            class="text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          </button>
-        </div>
-      </div>
+<header>
+  <div class="corner" />
 
-      <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-      <div
-        class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 {showMenu
-          ? 'flex'
-          : 'hidden'}"
-      >
-        <a class="text-gray-800 hover:text-blue-400" href="/home">Home</a>
-        <a class="text-gray-800 hover:text-blue-400" href="/blog">Blogs</a>
-        <a class="text-gray-800 hover:text-blue-400" href="/contact">Contact US</a>
-        <a class="text-gray-800 hover:text-blue-400" href="/about">About Us</a>
-      </div>
-    </nav>
-</div>
+  <nav>
+    <ul>
+      <li class:active={$page.url.pathname === '/'}>
+        <a href="/">Home</a>
+      </li>
+      <li class:active={$page.url.pathname.startsWith('/exercise')}>
+        <a href="/exercise">Exercise</a>
+      </li>
+      <li class:active={$page.url.pathname === '/progress'}>
+        <a href="/progress">Progress</a>
+      </li>
+      <li class:active={$page.url.pathname === '/about'}>
+        <a href="/about">About</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="corner">
+    <a href="https://github.com/coolguy1771/project-fms">
+      <img src={github} alt="GitHub" />
+    </a>
+  </div>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .corner {
+    width: 3em;
+    height: 3em;
+  }
+
+  .corner a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .corner img {
+    width: 10em;
+    height: 10em;
+    object-fit: contain;
+    fill: white;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  ul {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    background: var(--background);
+    background-size: contain;
+  }
+
+  li {
+    position: relative;
+    height: 100%;
+  }
+
+  li.active::before {
+    --size: 6px;
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: calc(50% - var(--size));
+    border: var(--size) solid transparent;
+    border-top: var(--size) solid var(--color-theme-1);
+  }
+
+  nav a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 0.5rem;
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.2s linear;
+  }
+
+  a:hover {
+    color: var(--color-theme-1);
+  }
+</style>
