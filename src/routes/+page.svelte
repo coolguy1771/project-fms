@@ -2,35 +2,23 @@
   import Greeting from '../lib/components/greeting.svelte'
   import { fade } from 'svelte/transition'
 
-  let visited = false
-  let userName = localStorage.getItem('name') || ''
-
-  if (userName !== '') {
-    visited = true
-  }
-
-  function setName() {
-    localStorage.setItem('name', userName)
-    visited = true
-  }
+  let userName = localStorage.getItem('name')
 </script>
 
-{#if !visited}
-  <h1>What should we call you?</h1>
-  <input bind:value={userName} />
-  <button on:click={setName}>Submit</button>
-{:else}
-  <div transition:fade={{ delay: 300, duration: 300 }}>
-    <Greeting name={userName} />
-    <button
-      on:click={() => {
-        window.location.href = '/exercise'
-      }}
-    >
-      Start
-    </button>
-  </div>
-{/if}
+<svelte:head>
+  <title>Home</title>
+</svelte:head>
+
+<div transition:fade={{ delay: 300, duration: 300 }}>
+  <Greeting name={userName} />
+  <button
+    on:click={() => {
+      window.location.href = '/exercise'
+    }}
+  >
+    Start
+  </button>
+</div>
 
 <style>
   button {

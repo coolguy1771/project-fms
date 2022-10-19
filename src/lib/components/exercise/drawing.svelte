@@ -5,10 +5,12 @@
 
 <p>Practice drawing</p>
 
-<canvas width="500" height="500" style="border: 1px solid black;" />
+<canvas />
 
 <style>
   canvas {
     border: 1px solid black;
+    width: 100%;
+    height: 100%;
   }
 </style>

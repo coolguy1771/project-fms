@@ -16,7 +16,9 @@
   <section id="error">
     <h1>Yikes!</h1>
     <nav>
-      <a href="javascript:history.back()"><Icon icon="mdi:keyboard-erase" inline />Go Back</a>
+      <a href="javascript:history.back()"
+        ><Icon icon="mdi:keyboard-erase" inline />Go Back</a
+      >
     </nav>
 
     {#if $page.error.message}

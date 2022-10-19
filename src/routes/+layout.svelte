@@ -5,6 +5,17 @@
   import { onMount } from 'svelte'
 
   let visible = false
+  let visited = false
+  let userName = ''
+
+  if (userName !== '') {
+    visited = true
+  }
+
+  function setName() {
+    localStorage.setItem('name', userName)
+    visited = true
+  }
 
   onMount(() => {
     visible = true
@@ -14,7 +25,13 @@
 {#if visible}
   <main id="container" transition:fade={{ delay: 300, duration: 300 }}>
     <MenuBar />
-    <slot />
+    {#if !visited}
+      <h1>What should we call you?</h1>
+      <input bind:value={userName} />
+      <button class="nameButton" on:click={setName}>Submit</button>
+    {:else}
+      <slot />
+    {/if}
   </main>
 {/if}
 
@@ -61,5 +78,18 @@
       margin-bottom: 1vh;
       width: 90%;
     }
+  }
+  .nameButton {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
   }
 </style>
