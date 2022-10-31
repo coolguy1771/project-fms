@@ -6,7 +6,7 @@
 
   let visible = false
   let visited = false
-  let userName = ''
+  let userName
 
   if (userName !== '') {
     visited = true
@@ -19,6 +19,10 @@
 
   onMount(() => {
     visible = true
+    userName = localStorage.getItem('name')
+    if (userName !== '') {
+      visited = true
+    }
   })
 </script>
 
