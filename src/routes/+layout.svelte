@@ -6,11 +6,7 @@
 
   let visible = false
   let visited = false
-  let userName
-
-  if (userName !== '') {
-    visited = true
-  }
+  let userName = ''
 
   function setName() {
     localStorage.setItem('name', userName)
@@ -19,9 +15,11 @@
 
   onMount(() => {
     visible = true
-    userName = localStorage.getItem('name')
-    if (userName !== '') {
-      visited = true
+    userName = localStorage.getItem('name') || ''
+    visited = localStorage.getItem('visited') || false
+    if (visited == true) {
+      localStorage.setItem('visited', true)
+      userName = localStorage.getItem('name')
     }
   })
 </script>
@@ -37,9 +35,18 @@
       <slot />
     {/if}
   </main>
+{:else}
+  <div>
+    <h1 class="loading">Loading...</h1>
+  </div>
 {/if}
 
 <style>
+  .loading {
+    text-align: center;
+    margin-top: 50px;
+  }
+
   main {
     align-items: stretch;
     display: grid;
@@ -51,7 +58,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 5vh;
-    width: 60%;
+    width: 80%;
   }
 
   @media screen and (max-width: 1260px) {

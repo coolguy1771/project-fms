@@ -13,7 +13,7 @@
   <Greeting name={userName} />
   <button
     on:click={() => {
-      window.location.href = '/exercise'
+      window.location.href = window.location.pathname + '/exercise'
     }}
   >
     Start

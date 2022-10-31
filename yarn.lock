@@ -36,6 +36,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@floating-ui/core@npm:^0.7.2":
+  version: 0.7.3
+  resolution: "@floating-ui/core@npm:0.7.3"
+  checksum: f48f9fb0d19dcbe7a68c38e8de7fabb11f0c0e6e0ef215ae60b5004900bacb1386e7b89cb377d91a90ff7d147ea1f06c2905136ecf34dea162d9696d8f448d5f
+  languageName: node
+  linkType: hard
+
+"@floating-ui/dom@npm:0.5.2":
+  version: 0.5.2
+  resolution: "@floating-ui/dom@npm:0.5.2"
+  dependencies:
+    "@floating-ui/core": ^0.7.2
+  checksum: ff0897abed2e97a8d134b4dd8fa5309553eda3c25dbc2dbe8f7564b3eeac93d21d9334ae7c1ba1f1e5442ed119d82d2ce6935cd4ff607da1c0c6a913c493f5fc
+  languageName: node
+  linkType: hard
+
 "@fontsource/roboto@npm:4.5.8":
   version: 4.5.8
   resolution: "@fontsource/roboto@npm:4.5.8"
@@ -169,6 +185,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stitches/core@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@stitches/core@npm:1.2.8"
+  checksum: 3a76a697b1d71ffb212e8b166f923c8f66ef99de93689dd417571f90fbba5692abb9a92220acd102baf5298896f0fdfeaa721da2d61adee1247531a26f67a15f
+  languageName: node
+  linkType: hard
+
 "@sveltejs/adapter-static@npm:^1.0.0-next.44":
   version: 1.0.0-next.44
   resolution: "@sveltejs/adapter-static@npm:1.0.0-next.44"
@@ -219,6 +242,26 @@ __metadata:
     diff-match-patch:
       optional: true
   checksum: 3ec5c8f09b3ebc7f747d1d7a030deb39628e7a014d033cc583cb56fb958279d9a09b3b161a0c6766d58129f1962ea74409624394b0f3ebb74c612127c68db834
+  languageName: node
+  linkType: hard
+
+"@svelteuidev/composables@npm:^0.7.5":
+  version: 0.7.5
+  resolution: "@svelteuidev/composables@npm:0.7.5"
+  checksum: ef5df31c49e540d14a064ce247a0b4e4020894e6ba5e3f5acf76934fc0a63b0ec338ae4e77dc07fb2850c3366cbbe154e050df2fbc302bcdf5722b9e67a186ae
+  languageName: node
+  linkType: hard
+
+"@svelteuidev/core@npm:^0.7.5":
+  version: 0.7.5
+  resolution: "@svelteuidev/core@npm:0.7.5"
+  dependencies:
+    "@floating-ui/dom": 0.5.2
+    "@stitches/core": 1.2.8
+  peerDependencies:
+    "@svelteuidev/composables": 0.7.5
+    svelte: 3.47.0
+  checksum: 186acdb3e9c0cd454d693be74fb83e2472a9ac0ca43f4e5696e34782996d2cd19268083ed6e52ed5d99aadf32285fc75f01486ce4d6a9c991b44e36b060304d1
   languageName: node
   linkType: hard
 
@@ -1979,6 +2022,8 @@ __metadata:
     "@playwright/test": ^1.25.0
     "@sveltejs/adapter-static": ^1.0.0-next.44
     "@sveltejs/kit": next
+    "@svelteuidev/composables": ^0.7.5
+    "@svelteuidev/core": ^0.7.5
     eslint: ^8.16.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-svelte3: ^4.0.0
