@@ -3,6 +3,7 @@
   import MenuBar from '$lib/components/menuBar.svelte'
   import { fade } from 'svelte/transition'
   import { onMount } from 'svelte'
+  import { browser } from '$app/environment'
 
   let visible = false
   let visited = false
@@ -15,13 +16,12 @@
 
   onMount(() => {
     visible = true
-    userName = localStorage.getItem('name') || ''
-    visited = localStorage.getItem('visited') || false
-    if (visited == true) {
-      localStorage.setItem('visited', true)
-      userName = localStorage.getItem('name')
-    }
   })
+
+  if (browser) {
+    visited = localStorage.getItem('visited') || false
+    userName = localStorage.getItem('name')
+  }
 </script>
 
 {#if visible}

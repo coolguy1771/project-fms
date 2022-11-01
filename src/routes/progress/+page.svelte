@@ -1,11 +1,5 @@
 <script>
-  import { onMount } from 'svelte'
-  import { fade } from 'svelte/transition'
   import { Progress } from '@svelteuidev/core'
-
-  onMount(() => {
-    visible = true
-  })
 
   const typingPractice = {
     name: 'Typing Practice',
@@ -27,28 +21,32 @@
   const exercises = [typingPractice, signingPractice, drawingPractice]
 </script>
 
-<div transition:fade={{ delay: 300, duration: 300 }}>
+<div>
   <h1>Progress</h1>
   <p>Here you can view your progress across all of the exercises</p>
 
   {#each exercises as exercise}
     <div class="exercise">
-      <li>
-        <h2>{exercise.name}</h2>
-        <p>{exercise.description}</p>
-        <Progress
-          color="orange"
-          value={exercise.progress}
-          label="{exercise.progress}%"
-          size="xl"
-          radius="xl"
-          striped
-          animate
-        />
-      </li>
+      <h2>{exercise.name}</h2>
+      <p>{exercise.description}</p>
+      <Progress
+        color="orange"
+        value={exercise.progress}
+        label="{exercise.progress}%"
+        size="xl"
+        radius="xl"
+        striped
+        animate
+      />
     </div>
   {/each}
 </div>
 
 <style>
+  .exercise {
+    justify-content: left;
+    align-items: center;
+    display: block;
+    margin-bottom: 30px;
+  }
 </style>

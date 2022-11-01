@@ -1,5 +1,6 @@
 <script>
   import { page } from '$app/stores'
+  import { base } from '$app/paths'
   import github from '$lib/images/github.svg'
 </script>
 
@@ -9,16 +10,16 @@
   <nav>
     <ul>
       <li class:active={$page.url.pathname === '/'}>
-        <a href="/">Home</a>
+        <a href="{base}/">Home</a>
       </li>
       <li class:active={$page.url.pathname.startsWith('/exercise')}>
-        <a href="/exercise">Exercise</a>
+        <a href="{base}/exercise">Exercise</a>
       </li>
       <li class:active={$page.url.pathname === '/progress'}>
-        <a href="/progress">Progress</a>
+        <a href="{base}/progress">Progress</a>
       </li>
       <li class:active={$page.url.pathname === '/about'}>
-        <a href="/about">About</a>
+        <a href="{base}/about">About</a>
       </li>
     </ul>
   </nav>
@@ -50,8 +51,8 @@
   }
 
   .corner img {
-    width: 10em;
-    height: 10em;
+    width: 3em;
+    height: 3em;
     object-fit: contain;
     fill: white;
   }

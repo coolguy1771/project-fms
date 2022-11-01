@@ -1,6 +1,7 @@
 <script>
   import Greeting from '../lib/components/greeting.svelte'
   import { fade } from 'svelte/transition'
+  import { base } from '$app/paths'
 
   let userName = localStorage.getItem('name')
 </script>
@@ -13,7 +14,7 @@
   <Greeting name={userName} />
   <button
     on:click={() => {
-      window.location.href = window.location.pathname + '/exercise'
+      window.location.href = `${base}/exercise`
     }}
   >
     Start

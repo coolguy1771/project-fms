@@ -1,24 +1,25 @@
 <script>
-  import { fade } from 'svelte/transition'
+  import { base } from '$app/paths'
+  import { Progress } from '@svelteuidev/core'
 
   const typingPractice = {
     name: 'Typing Practice',
     description: 'Practice typing',
-    url: window.location.pathname + '/exercise/typing',
+    url: base + '/exercise/typing',
     progress: localStorage.getItem('typingPracticeProgress') || 0,
   }
 
   const drawingPractice = {
     name: 'Drawing Practice',
     description: 'Practice drawing',
-    url: window.location.pathname + '/exercise/drawing',
+    url: base + '/exercise/drawing',
     progress: localStorage.getItem('drawingPracticeProgress') || 0,
   }
 
   const signingPractice = {
     name: 'Signing Practice',
     description: 'Practice signing',
-    url: window.location.pathname + '/exercise/signing',
+    url: base + '/exercise/signing',
     progress: localStorage.getItem('dawingPracticeProgress') || 0,
   }
 
@@ -29,17 +30,23 @@
   <title>Exercise</title>
 </svelte:head>
 
-<div transition:fade={{ delay: 300, duration: 300 }}>
-  <h1>Exercises</h1>
+<div>
   <ul>
+    <h1>Exercises</h1>
     {#each exercises as exercise}
       <div class="exercise">
-        <li>
-          <h2>{exercise.name}</h2>
-          <p>{exercise.description}</p>
-          <p>{exercise.progress} %</p>
-          <a href={exercise.url}>Start</a>
-        </li>
+        <h2>{exercise.name}</h2>
+        <p>{exercise.description}</p>
+        <Progress
+          color="orange"
+          value={exercise.progress}
+          label="{exercise.progress}%"
+          size="xl"
+          radius="xs"
+          striped
+          animate
+        />
+        <a href={exercise.url}>Start</a>
       </div>
     {/each}
   </ul>
@@ -56,7 +63,7 @@
     justify-content: left;
     align-items: center;
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   a {
     background-color: #4caf50; /* Green */
