@@ -4,26 +4,30 @@
 
   const typingPractice = {
     name: 'Typing Practice',
-    description: 'Practice typing',
+    description: 'In this exercise practice typing the displayed words as fast and as accurately as you can. To check the completed word click the check button.',
     url: base + '/exercise/typing',
-    progress: localStorage.getItem('typingPracticeProgress') || 0,
+    progress: localStorage.getItem('typingProgress') || 0,
   }
 
   const drawingPractice = {
     name: 'Drawing Practice',
-    description: 'Practice drawing',
+    description: 'In this exercise practice tracing the pictures displayed on the screen. To finish click the I\'m done button.',
     url: base + '/exercise/drawing',
-    progress: localStorage.getItem('drawingPracticeProgress') || 0,
+    progress: localStorage.getItem('drawingProgress') || 0,
   }
 
   const signingPractice = {
     name: 'Signing Practice',
-    description: 'Practice signing',
+    description: 'In this exercise practice tracing the letters displayed on the screen. To finish click the I\'m done button.',
     url: base + '/exercise/signing',
-    progress: localStorage.getItem('dawingPracticeProgress') || 0,
+    progress: localStorage.getItem('signingProgress') || 0,
   }
 
-  const exercises = [typingPractice, drawingPractice, signingPractice]
+
+  const exercises = [typingPractice, signingPractice, drawingPractice]
+  for (let i = 0; i < 3; i++) {
+    console.log(exercises[i].progress)
+  }
 </script>
 
 <svelte:head>
@@ -37,16 +41,20 @@
       <div class="exercise">
         <h2>{exercise.name}</h2>
         <p>{exercise.description}</p>
-        <Progress
-          color="orange"
-          value={exercise.progress}
-          label="{exercise.progress}%"
-          size="xl"
-          radius="xs"
-          striped
-          animate
-        />
+        {#if exercises.progress > 0}
+          <Progress
+            color="orange"
+            value={exercise.progress}
+            label="{exercise.progress}%"
+            size="xl"
+            radius="xs"
+            striped
+            animate
+          />
+          <a href={exercise.url}>Continue</a>
+        {:else}
         <a href={exercise.url}>Start</a>
+        {/if}
       </div>
     {/each}
   </ul>

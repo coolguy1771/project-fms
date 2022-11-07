@@ -16,12 +16,11 @@
 
   onMount(() => {
     visible = true
+    if (localStorage.getItem('name') != null) {
+      visited = true
+      userName = localStorage.getItem('name')
+    }
   })
-
-  if (browser) {
-    visited = localStorage.getItem('visited') || false
-    userName = localStorage.getItem('name')
-  }
 </script>
 
 {#if visible}
