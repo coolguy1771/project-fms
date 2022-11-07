@@ -1,4 +1,7 @@
 <script>
+  import { SvelteToast, toast } from '@zerodevx/svelte-toast'
+
+  let invalid
   let words = [
     'apple',
     'banana',
@@ -105,44 +108,71 @@
   ]
   let word = words[Math.floor(Math.random() * words.length)]
   let letters = word.split('')
-  $: word
+  let userInput
+  let progress = localStorage.getItem('typingProgress') || 0
 
-  function checkLetter(letter) {
-    if (letter === word[0]) {
-      word = word.slice(1)
-      if (word.length === 0) {
-        words = words.slice(1)
-        if (words.length === 0) {
-          done(exercise)
-        } else {
-          word = words[0]
-          letters = word.split('')
-        }
-      }
+  function checkWord() {
+    if (userInput == word) {
+      invalid = false
+      word = words[Math.floor(Math.random() * words.length)]
+      letters = word.split('')
+      userInput = ''
+      toast.push({ msg: 'Correct!', duration: 2000 })
+      progress = parseInt(progress) + 10
+      localStorage.setItem('typingProgress', progress)
+
+    } else {
+      invalid = true
+      console.log('invalid')
+      toast.push({ msg: 'That was incorrect, try again', duration: 2000 })
     }
   }
 </script>
 
 <h1>Typing Practice</h1>
 
+<SvelteToast />
 <div class="content">
   <div class="word">
     {#each letters as letter}
-      <span class="letter">{letter}</span>
+      <span class="noSelect" class:invalid={invalid}>{letter}</span>
     {/each}
   </div>
   <div class="input">
-    <input
-      type="text"
-      bind:value={word}
-      on:keyup={checkLetter(word.split('', 1))}
-    />
+    <input type="text" spellcheck="false" bind:value={userInput} />
+    <button  on:click={checkWord}>Check</button>
   </div>
 </div>
 
 <style>
-
-  .invalid {
-    color: red;
+  .input {
+    align-items: left;
+    font-family: monospace;
+    font-size: 2rem;
   }
+  .word {
+    align-items: left;
+    font-family: monospace;
+    font-size: 6rem;
+  }
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: green;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .noSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 </style>

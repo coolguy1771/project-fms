@@ -4,7 +4,7 @@
   const typingPractice = {
     name: 'Typing Practice',
     description: 'Practice typing',
-    progress: localStorage.getItem('typingPracticeProgress') || 0,
+    progress: localStorage.getItem('typingProgress') || 0,
   }
 
   const drawingPractice = {
@@ -18,6 +18,7 @@
     description: 'Practice signing',
     progress: localStorage.getItem('dawingPracticeProgress') || 0,
   }
+
   const exercises = [typingPractice, signingPractice, drawingPractice]
 </script>
 
