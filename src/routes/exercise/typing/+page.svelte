@@ -1,5 +1,7 @@
 <script>
   import { SvelteToast, toast } from '@zerodevx/svelte-toast'
+  import  Correct  from '$lib/sounds/correct.mp3'
+  import Incorrect from '$lib/sounds/incorrect.mp3'
 
   let invalid
   let words = [
@@ -110,6 +112,8 @@
   let letters = word.split('')
   let userInput
   let progress = localStorage.getItem('typingProgress') || 0
+  let correctSound = new Audio(Correct)
+  let incorrectSound = new Audio(Incorrect)
 
   function checkWord() {
     if (userInput == word) {
@@ -118,13 +122,14 @@
       letters = word.split('')
       userInput = ''
       toast.push({ msg: 'Correct!', duration: 2000 })
+      correctSound.play()
       progress = parseInt(progress) + 10
       localStorage.setItem('typingProgress', progress)
 
     } else {
       invalid = true
-      console.log('invalid')
       toast.push({ msg: 'That was incorrect, try again', duration: 2000 })
+      incorrectSound.play()
     }
   }
 </script>

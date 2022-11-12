@@ -25,9 +25,6 @@
 
 
   const exercises = [typingPractice, signingPractice, drawingPractice]
-  for (let i = 0; i < 3; i++) {
-    console.log(exercises[i].progress)
-  }
 </script>
 
 <svelte:head>
