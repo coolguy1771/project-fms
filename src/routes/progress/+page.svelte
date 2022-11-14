@@ -10,13 +10,13 @@
   const drawingPractice = {
     name: 'Drawing Practice',
     description: 'Practice drawing',
-    progress: localStorage.getItem('drawingPracticeProgress') || 0,
+    progress: localStorage.getItem('drawingProgress') || 0,
   }
 
   const signingPractice = {
     name: 'Signing Practice',
     description: 'Practice signing',
-    progress: localStorage.getItem('dawingPracticeProgress') || 0,
+    progress: localStorage.getItem('signingProgress') || 0,
   }
 
   const exercises = [typingPractice, signingPractice, drawingPractice]

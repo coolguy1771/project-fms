@@ -1,7 +1,10 @@
 <script>
     function done() {
-      console.log('done')
+      progress = parseInt(progress) + 10
+      localStorage.setItem('drawingProgress', progress)
+      location.reload()
     }
+    let progress = localStorage.getItem('drawingProgress') || 0
     let drawingobjects = [
       'A',
       'B',
