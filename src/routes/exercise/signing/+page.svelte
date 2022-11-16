@@ -1,51 +1,21 @@
 <script>
     function done() {
       progress = parseInt(progress) + 10
-      localStorage.setItem('drawingProgress', progress)
+      localStorage.setItem('signingProgress', progress)
       location.reload()
     }
-    let progress = localStorage.getItem('drawingProgress') || 0
-    let drawingobjects = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ]
-    let drawingobject =
-      drawingobjects[Math.floor(Math.random() * drawingobjects.length)]
+    let progress = localStorage.getItem('signingProgress') || 0
+    
   </script>
-  
   <div>
-    <h2>Draw '{drawingobject}'</h2>
+    <h2> Please sign your name</h2>
   </div>
   <div class="content">
     <iframe
-      height="650"
-      width="900"
-      title="Drawing Practice"
-      src="https://editor.p5js.org/aniketgarg1/full/6wWCNepZI"
+      height="460"
+      width="625"
+      title="Signing Practice"
+      src="https://editor.p5js.org/apradh25/full/527IUzG5p"
     />
   </div>
   
