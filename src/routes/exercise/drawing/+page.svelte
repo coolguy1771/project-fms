@@ -5,7 +5,7 @@
   function done() {
     doneSound.play()
     progress = parseInt(progress) + 10
-    localStorage.setItem('signingProgress', progress)
+    localStorage.setItem('drawingProgress', progress)
     //Wait for 1 second before reloading
     setTimeout(function () {
       location.reload()
