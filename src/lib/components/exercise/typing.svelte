@@ -141,7 +141,6 @@
 </div>
 
 <style>
-
   .invalid {
     color: red;
   }

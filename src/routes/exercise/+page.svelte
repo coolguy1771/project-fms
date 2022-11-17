@@ -4,25 +4,27 @@
 
   const typingPractice = {
     name: 'Typing Practice',
-    description: 'In this exercise practice typing the displayed words as fast and as accurately as you can. To check the completed word click the check button.',
+    description:
+      'In this exercise practice typing the displayed words as fast and as accurately as you can. To check the completed word click the check button.',
     url: base + '/exercise/typing',
     progress: localStorage.getItem('typingProgress') || 0,
   }
 
   const drawingPractice = {
     name: 'Drawing Practice',
-    description: 'In this exercise practice tracing the pictures displayed on the screen. To finish click the I\'m done button.',
+    description:
+      "In this exercise practice tracing the pictures displayed on the screen. To finish click the I'm done button.",
     url: base + '/exercise/drawing',
     progress: localStorage.getItem('drawingProgress') || 0,
   }
 
   const signingPractice = {
     name: 'Signing Practice',
-    description: 'In this exercise practice tracing the letters displayed on the screen. To finish click the I\'m done button.',
+    description:
+      "In this exercise practice tracing the letters displayed on the screen. To finish click the I'm done button.",
     url: base + '/exercise/signing',
     progress: localStorage.getItem('signingProgress') || 0,
   }
-
 
   const exercises = [typingPractice, signingPractice, drawingPractice]
 </script>
@@ -50,7 +52,7 @@
           />
           <a href={exercise.url}>Continue</a>
         {:else}
-        <a href={exercise.url}>Start</a>
+          <a href={exercise.url}>Start</a>
         {/if}
       </div>
     {/each}
