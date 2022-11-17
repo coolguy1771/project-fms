@@ -3,7 +3,6 @@
   import MenuBar from '$lib/components/menuBar.svelte'
   import { fade } from 'svelte/transition'
   import { onMount } from 'svelte'
-  import { browser } from '$app/environment'
 
   let visible = false
   let visited = false

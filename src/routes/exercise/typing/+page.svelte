@@ -1,6 +1,6 @@
 <script>
   import { SvelteToast, toast } from '@zerodevx/svelte-toast'
-  import  Correct  from '$lib/sounds/correct.mp3'
+  import Correct from '$lib/sounds/correct.mp3'
   import Incorrect from '$lib/sounds/incorrect.mp3'
 
   let invalid
@@ -125,7 +125,6 @@
       correctSound.play()
       progress = parseInt(progress) + 10
       localStorage.setItem('typingProgress', progress)
-
     } else {
       invalid = true
       toast.push({ msg: 'That was incorrect, try again', duration: 2000 })
@@ -140,12 +139,12 @@
 <div class="content">
   <div class="word">
     {#each letters as letter}
-      <span class="noSelect" class:invalid={invalid}>{letter}</span>
+      <span class="noSelect" class:invalid>{letter}</span>
     {/each}
   </div>
   <div class="input">
     <input type="text" spellcheck="false" bind:value={userInput} />
-    <button  on:click={checkWord}>Check</button>
+    <button on:click={checkWord}>Check</button>
   </div>
 </div>
 
@@ -172,12 +171,12 @@
     cursor: pointer;
   }
   .noSelect {
-  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-}
+  }
 </style>
