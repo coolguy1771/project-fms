@@ -1,7 +1,14 @@
+
 <script>
+    import  Correct  from '$lib/sounds/correct.mp3'
+    import { SvelteToast, toast } from '@zerodevx/svelte-toast'
+    let correctSound = new Audio(Correct)
     function done() {
+      toast.push({ msg: 'Correct!', duration: 2000 })
+      correctSound.play()
       progress = parseInt(progress) + 10
       localStorage.setItem('drawingProgress', progress)
+      
       location.reload()
     }
     let progress = localStorage.getItem('drawingProgress') || 0
@@ -40,6 +47,7 @@
   <div>
     <h2>Draw '{drawingobject}'</h2>
   </div>
+  <SvelteToast />
   <div class="content">
     <iframe
       height="650"
@@ -48,9 +56,9 @@
       src="https://editor.p5js.org/aniketgarg1/full/6wWCNepZI"
     />
   </div>
-  
-  <button on:click={done}>I'm Done</button>
-  
+  <button on:click={done}>
+    I'm done 
+  </button>
   <style>
     .content {
       display: flex;
