@@ -1,6 +1,7 @@
 <script>
   import Done from '$lib/sounds/correct.mp3'
   import Timer from '$lib/components/timer.svelte'
+  import { toast, SvelteToast } from '@zerodevx/svelte-toast'
 
   let doneSound = new Audio(Done)
   let timer = localStorage.getItem('drawingTimer') || 60
@@ -71,6 +72,7 @@
 <div>
   <h3>Draw A '{drawingobject}'</h3>
 </div>
+<SvelteToast />
 <div class="timer">
   <!-- Timer -->
   <Timer countdown={timer} on:completed={notDone} />
