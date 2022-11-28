@@ -1,5 +1,6 @@
 <script>
   import { SvelteToast, toast } from '@zerodevx/svelte-toast'
+  import { Progress } from '@svelteuidev/core'
   import Correct from '$lib/sounds/correct.mp3'
   import Incorrect from '$lib/sounds/incorrect.mp3'
 
@@ -108,6 +109,7 @@
     'hot dog',
     'taco',
   ]
+
   let word = words[Math.floor(Math.random() * words.length)]
   let letters = word.split('')
   let userInput
@@ -116,19 +118,24 @@
   let incorrectSound = new Audio(Incorrect)
 
   function checkWord() {
-    if (userInput == word) {
-      invalid = false
-      word = words[Math.floor(Math.random() * words.length)]
-      letters = word.split('')
-      userInput = ''
-      toast.push({ msg: 'Correct!', duration: 2000 })
-      correctSound.play()
-      progress = parseInt(progress) + 10
-      localStorage.setItem('typingProgress', progress)
-    } else {
-      invalid = true
-      toast.push({ msg: 'That was incorrect, try again', duration: 2000 })
-      incorrectSound.play()
+    if (event.keyCode == 13) {
+      if (userInput == word) {
+        invalid = false
+        word = words[Math.floor(Math.random() * words.length)]
+        letters = word.split('')
+        userInput = ''
+        toast.push({ msg: 'Correct!', duration: 2000 })
+        correctSound.play()
+        if (progress >= 100) {
+          progress = 100
+        }
+        progress = parseInt(progress) + 10
+        localStorage.setItem('typingProgress', progress)
+      } else {
+        invalid = true
+        toast.push({ msg: 'That was incorrect, try again', duration: 2000 })
+        incorrectSound.play()
+      }
     }
   }
 </script>
@@ -136,6 +143,7 @@
 <h1>Typing Practice</h1>
 
 <SvelteToast />
+<Progress tween value={progress} label="{progress}%" size="xl" radius="xl" />
 <div class="content">
   <div class="word">
     {#each letters as letter}
@@ -143,7 +151,13 @@
     {/each}
   </div>
   <div class="input">
-    <input type="text" spellcheck="false" bind:value={userInput} />
+    <input
+      type="text"
+      spellcheck="false"
+      bind:value={userInput}
+      autofocus
+      on:keydown={checkWord}
+    />
     <button on:click={checkWord}>Check</button>
   </div>
 </div>
